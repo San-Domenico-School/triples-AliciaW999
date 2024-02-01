@@ -1,18 +1,72 @@
+import greenfoot.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Write a description of class Deck here.
+ * deck for triples
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alicia
+ * @version Jan 18
  */
 
-import greenfoot.*;
-
 public class Deck 
-{
-    /****************************************************
-    ***   Leave as comment until ready to implement   ***
-    *****************************************************
-    // adds all the cards to the unshuffled deck.   
+{   
+    private Card[] unShuffledDeck;
+    private ArrayList<Card> shuffledDeck;
+    
+     Deck(int numOfCardsInDeck)
+    {
+        numOfCardsInDeck = limitNumCardsInDeck(numOfCardsInDeck);  // limits size to 27 or 81        
+        unShuffledDeck = new Card[numOfCardsInDeck + 1];           // playing cards plus blank card
+        shuffledDeck = new ArrayList<Card>();                          // Instantiates ArrayList with no elements
+        populateUnshuffledDeckWithCards(numOfCardsInDeck);         // Initializes Unshuffled Deck
+        createShuffledDeck();                                      // Initializes shuffled deck excluding blank card
+    }
+    
+    public int getNumCardsInDeck()
+    {
+        //keeps track of how many unused cards remain in the deck.
+        return shuffledDeck.size();
+    }
+    
+    public Card getTopCard()
+    {
+        //getTopCard returns the top card of the deck as the cards are dealt.
+        return shuffledDeck.remove(0);
+    }
+    
+    public Card getShuffledCard(int index)
+    {
+        //getShuffledCard returns a card at a specific location in the deck.
+        return shuffledDeck.get(index);
+    }
+    
+    public ArrayList<Card> getShuffledDeck()
+    {
+        //getShuffledDeck returns the entire shuffled deck.
+        return shuffledDeck;
+    }
+
+    public int limitNumCardsInDeck(int num)
+    {
+        //limitNumCardsInDeck forces the number of cards in the unshuffled deck to either be 27 
+        //(3 set of 3 characteristics of triples) or 81(3 set of 4 characteristics of triples). 
+        if (num <= 27)
+            return 27;
+        
+        else
+            return 81;
+    }
+    
+    public void createShuffledDeck()
+    {
+        for(int i = 1; i< unShuffledDeck.length; i++)
+        {
+            int index = (int)(Math.random() * shuffledDeck.size());
+            shuffledDeck.add(index, unShuffledDeck[i]);
+        }
+    }
+            
     private void populateUnshuffledDeckWithCards(int numOfCardsInDeck)        
     {
         unShuffledDeck[0] = new Card(Card.Shape.NO_SHAPE, Card.Color.NO_COLOR,0,0,
@@ -265,9 +319,7 @@ public class Deck
                 unShuffledDeck[81] = new Card(Card.Shape.TRIANGLE, Card.Color.RED,3,2,
                         new GreenfootImage("Triplets_2/triangle_red_3_2.png"), 
                         new GreenfootImage("Triplets_2/triangle_red_3_2_selected.png"));
-                }
-          }
+            }
+        }
     }
-    
-    **************  END OF COMMENT BLOCK  ***************/
 }

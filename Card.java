@@ -9,7 +9,6 @@ import greenfoot.*;
 
 public class Card extends Actor
 {
-    
     public enum Shape
     {
         TRIANGLE, SQUARE, CIRCLE, NO_SHAPE
@@ -23,7 +22,7 @@ public class Card extends Actor
     private Color color;
     private int numberOfShapes,shading;
     private GreenfootImage cardImage, selectedCardImage;
-    private boolean isSelected;
+    public boolean isSelected;
 
     public Card(Shape shape, Color color, int numberOfShapes, int shading, 
                 GreenfootImage cardImage, GreenfootImage selectedCardImage)
