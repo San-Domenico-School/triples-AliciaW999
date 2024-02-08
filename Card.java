@@ -18,6 +18,7 @@ public class Card extends Actor
     {
         RED, GREEN, BLUE, NO_COLOR
     }
+    
     private Shape shape;
     private Color color;
     private int numberOfShapes,shading;

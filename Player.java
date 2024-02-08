@@ -25,12 +25,12 @@ public class Player extends Actor
     public void act()
     {
         selectCards();
-        boolean threeCardsHaveBeenSelected = setCardsSelected();
-        if (threeCardsHaveBeenSelected)
+        if (threeCardsSelect())
         {
+            
             dealer.setCardsSelected(cardsOnBoard, cardsSelected, selectedCardsIndex);
-            dealer.checkIfTriple();
             resetCardsSelected(); 
+
         }
     }
     
@@ -72,8 +72,16 @@ public class Player extends Actor
         selectedCardsIndex.clear();
     }
     
-    private boolean setCardsSelected()
+    private boolean threeCardsSelect()
     {
-        return selectedCardsIndex.size() == 3;
+        if(selectedCardsIndex.size() == 3)
+        {
+            cardsSelected[0] = cardsOnBoard.get(selectedCardsIndex.get(0));
+            cardsSelected[1] = cardsOnBoard.get(selectedCardsIndex.get(1));
+            cardsSelected[0] = cardsOnBoard.get(selectedCardsIndex.get(0));
+            return true;
+        }
+        else
+            return false;
     }
 }

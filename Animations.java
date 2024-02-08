@@ -17,5 +17,14 @@ public class Animations
     public static void slideAndTurn(Card[] cards)
     {
         Greenfoot.playSound("swoosh.wav");
+        for(int i = 0; i < cards.length; i++)
+        {
+            cards[i].move(200);
+        }
+    }
+    
+    public static void shuffle(Card[] cards)
+    {
+        Greenfoot.playSound("shuffle.wav");
     }
 }
