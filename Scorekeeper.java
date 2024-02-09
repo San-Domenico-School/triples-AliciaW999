@@ -18,7 +18,7 @@ public class Scorekeeper
     
     public static void updateScore()
     {   
-        score += (27 - (System.currentTimeMillis() - startTime) / 1000);
+        score += Math.abs(27 - (System.currentTimeMillis() - startTime) / 1000);
         startTime = System.currentTimeMillis();
     }
     

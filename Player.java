@@ -27,14 +27,19 @@ public class Player extends Actor
         selectCards();
         if (threeCardsSelect())
         {
-            
             dealer.setCardsSelected(cardsOnBoard, cardsSelected, selectedCardsIndex);
             resetCardsSelected(); 
 
         }
+        cardsOnBoard = (ArrayList) getWorld().getObjects(Card.class);
     }
     
     public void addedToWorld(World world)
+    {
+        cardsOnBoard = (ArrayList) getWorld().getObjects(Card.class);
+    }
+    
+    public void update()
     {
         cardsOnBoard = (ArrayList) getWorld().getObjects(Card.class);
     }
@@ -78,7 +83,7 @@ public class Player extends Actor
         {
             cardsSelected[0] = cardsOnBoard.get(selectedCardsIndex.get(0));
             cardsSelected[1] = cardsOnBoard.get(selectedCardsIndex.get(1));
-            cardsSelected[0] = cardsOnBoard.get(selectedCardsIndex.get(0));
+            cardsSelected[2] = cardsOnBoard.get(selectedCardsIndex.get(2));
             return true;
         }
         else

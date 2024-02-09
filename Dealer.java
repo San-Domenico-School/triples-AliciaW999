@@ -40,7 +40,8 @@ public class Dealer extends Actor
         {
             for (int x = 80; x <= 400; x += 135) 
             {
-                getWorld().addObject(deck.getTopCard(), x, y);       
+                getWorld().addObject(deck.getTopCard(), x, y);
+                numCardsInDeck--;
             }
         }
     }
@@ -86,15 +87,13 @@ public class Dealer extends Actor
     }
 
     public boolean isTriple(Card[] cards)
-    {
-        return true;
-        /*
+    {        
         if(checkShape() && checkColor() && checkNumberOfShapes() && checkShading())
         {
             return true;
         }
         else
-            return false;*/
+            return false;
     }
     
     public void checkIfTriple(Card[] cards) 
@@ -118,10 +117,20 @@ public class Dealer extends Actor
         {
             cardsLocation[i][0] = card[i].getX();
             cardsLocation[i][1] = card[i].getY();
-            getWorld().addObject(deck.getTopCard(),cardsLocation[i][0], cardsLocation[i][1]);
         }
         
-        //Animations.slideAndTurn(cardsSelected);
+        Animations.slideAndTurn(cardsSelected);
+
+        for(int i = 0; i < 3; i++)
+        {
+            if (numCardsInDeck != 0)
+
+            {
+                getWorld().addObject(deck.getTopCard(),cardsLocation[i][0], cardsLocation[i][1]);
+            }
+        }
+        
+        numCardsInDeck -= 3;
         triplesRemaining--;
         Scorekeeper.updateScore();
         setUI();
@@ -132,6 +141,7 @@ public class Dealer extends Actor
     {
         if (triplesRemaining == 0) 
         {
+            getWorld().addObject(new YouWin(),265,300);
             Greenfoot.stop();
         }
     }

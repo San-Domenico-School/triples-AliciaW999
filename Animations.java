@@ -19,7 +19,7 @@ public class Animations
         Greenfoot.playSound("swoosh.wav");
         for(int i = 0; i < cards.length; i++)
         {
-            cards[i].move(200);
+            cards[i].move(-500);
         }
     }
     
