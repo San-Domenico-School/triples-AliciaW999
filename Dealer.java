@@ -127,10 +127,11 @@ public class Dealer extends Actor
 
             {
                 getWorld().addObject(deck.getTopCard(),cardsLocation[i][0], cardsLocation[i][1]);
+                numCardsInDeck--;
             }
         }
         
-        numCardsInDeck -= 3;
+        
         triplesRemaining--;
         Scorekeeper.updateScore();
         setUI();

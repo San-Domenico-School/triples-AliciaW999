@@ -32,6 +32,11 @@ public class Deck
     public Card getTopCard()
     {
         //getTopCard returns the top card of the deck as the cards are dealt.
+        if(shuffledDeck.isEmpty()) 
+        {
+        return null;
+        }
+    
         return shuffledDeck.remove(0);
     }
     
