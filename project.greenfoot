@@ -111,5 +111,5 @@ target8.y=0
 version=3.0.0
 width=797
 world.lastInstantiated=GameBoard
-xPosition=640
-yPosition=150
+xPosition=461
+yPosition=144

@@ -131,7 +131,6 @@ public class Dealer extends Actor
             }
         }
         
-        
         triplesRemaining--;
         Scorekeeper.updateScore();
         setUI();
@@ -142,7 +141,7 @@ public class Dealer extends Actor
     {
         if (triplesRemaining == 0) 
         {
-            getWorld().addObject(new YouWin(),265,300);
+            getWorld().addObject(new YouWin(),222,300);
             Greenfoot.stop();
         }
     }
